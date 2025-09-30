@@ -101,6 +101,11 @@ app.get('/api/learning/:topic', (c) => {
   return c.json(content)
 })
 
+// User Manual route (redirect to static HTML)
+app.get('/manual', (c) => {
+  return c.redirect('/static/user-manual.html')
+})
+
 // Main game interface
 app.get('/', (c) => {
   return c.render(

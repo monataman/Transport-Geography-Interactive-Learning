@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transport Geography Interactive Learning Platform - User Manual</title>
+    <style>
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            line-height: 1.6;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background: white;
+        }
+        
+        h1 {
+            color: #2563eb;
+            border-bottom: 3px solid #2563eb;
+            padding-bottom: 10px;
+            font-size: 2.5em;
+            margin-top: 0;
+        }
+        
+        h2 {
+            color: #1e40af;
+            border-left: 5px solid #3b82f6;
+            padding-left: 15px;
+            margin-top: 30px;
+            font-size: 1.8em;
+        }
+        
+        h3 {
+            color: #1e3a8a;
+            margin-top: 25px;
+            font-size: 1.4em;
+        }
+        
+        h4 {
+            color: #1e40af;
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+        
+        .toc {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .toc h2 {
+            color: #1e40af;
+            margin-top: 0;
+            border: none;
+            padding: 0;
+        }
+        
+        .toc ul {
+            column-count: 2;
+            column-gap: 30px;
+        }
+        
+        .toc a {
+            text-decoration: none;
+            color: #3b82f6;
+        }
+        
+        .toc a:hover {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+        
+        .scenario-card {
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .transport-mode {
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            border: 1px solid #bbf7d0;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .grade-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .grade-table th,
+        .grade-table td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .grade-table th {
+            background: #f9fafb;
+            font-weight: bold;
+            color: #374151;
+        }
+        
+        .grade-a { background: #d1fae5; color: #065f46; }
+        .grade-b { background: #fef3c7; color: #92400e; }
+        .grade-c { background: #fed7aa; color: #9a3412; }
+        .grade-d { background: #fecaca; color: #991b1b; }
+        
+        .feature-box {
+            background: #f8fafc;
+            border-left: 4px solid #3b82f6;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .warning-box {
+            background: #fef7cd;
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .success-box {
+            background: #ecfdf5;
+            border-left: 4px solid #10b981;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        ul, ol {
+            padding-left: 25px;
+        }
+        
+        li {
+            margin: 5px 0;
+        }
+        
+        code {
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .page-break {
+            page-break-before: always;
+        }
+        
+        .no-break {
+            page-break-inside: avoid;
+        }
+        
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.9em;
+        }
+        
+        @media print {
+            body {
+                margin: 0;
+                padding: 15px;
+                font-size: 12pt;
+                line-height: 1.4;
+            }
+            
+            h1 { font-size: 24pt; }
+            h2 { font-size: 18pt; }
+            h3 { font-size: 16pt; }
+            h4 { font-size: 14pt; }
+            
+            .toc ul {
+                column-count: 1;
+            }
+            
+            .page-break {
+                page-break-before: always;
+            }
+            
+            .no-break {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>📚 Transport Geography Interactive Learning Platform<br>User Manual</h1>
+    
+    <div class="feature-box">
+        <strong>Platform Access:</strong> <code>https://3000-i4b6xf42yzqyb7z0k1e6h-6532622b.e2b.dev</code><br>
+        <strong>Manual Version:</strong> 1.0<br>
+        <strong>Last Updated:</strong> September 2024<br>
+        <strong>Target Audience:</strong> Students and Instructors in Transport Geography
+    </div>
+
+    <div class="toc">
+        <h2>📋 Table of Contents</h2>
+        <ul>
+            <li><a href="#overview">Platform Overview</a></li>
+            <li><a href="#getting-started">Getting Started</a></li>
+            <li><a href="#learning-scenarios">Learning Scenarios</a></li>
+            <li><a href="#transport-modes">Transport Modes</a></li>
+            <li><a href="#how-to-use">How to Use the Platform</a></li>
+            <li><a href="#assessment">Understanding Assessment Results</a></li>
+            <li><a href="#learning-strategies">Learning Strategies</a></li>
+            <li><a href="#technical-features">Technical Features</a></li>
+            <li><a href="#educational-theory">Educational Theory</a></li>
+            <li><a href="#curriculum-integration">Curriculum Integration</a></li>
+            <li><a href="#troubleshooting">Troubleshooting</a></li>
+            <li><a href="#support">Support & Resources</a></li>
+        </ul>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2 id="overview">🎯 Platform Overview</h2>
+    
+    <p>The Transport Geography Interactive Learning Platform is an educational simulation game designed for students studying transport geography, logistics, and international transport systems. Through interactive scenarios and real-world simulations, students learn about mobility fundamentals, geographic constraints, and transportation system optimization.</p>
+
+    <div class="success-box no-break">
+        <strong>Educational Objectives:</strong>
+        <ul>
+            <li><strong>Mobility Fundamentals:</strong> Understanding economic and social activities (commuting, manufacturing, energy supply)</li>
+            <li><strong>Geographic Analysis:</strong> Origins, intermediate locations, destinations with geographic context</li>
+            <li><strong>Spatial Aspects:</strong> Passenger and freight mobility linked with geography</li>
+            <li><strong>Multi-scale Systems:</strong> Transportation from global to local scales</li>
+        </ul>
+    </div>
+
+    <h2 id="getting-started">🚀 Getting Started</h2>
+
+    <h3>1. Accessing the Platform</h3>
+    <ul>
+        <li><strong>URL:</strong> https://3000-i4b6xf42yzqyb7z0k1e6h-6532622b.e2b.dev</li>
+        <li><strong>Requirements:</strong> Modern web browser (Chrome, Firefox, Safari, Edge)</li>
+        <li><strong>Device Compatibility:</strong> Desktop, tablet, and mobile devices</li>
+        <li><strong>No Installation Required:</strong> Access directly through web browser</li>
+    </ul>
+
+    <h3>2. Platform Introduction</h3>
+    <p>Upon loading, you'll see:</p>
+    <ul>
+        <li><strong>Welcome Screen:</strong> Platform overview and learning objectives</li>
+        <li><strong>Feature Cards:</strong> Preview of Global Networks, Urban Systems, and Supply Chains</li>
+        <li><strong>Start Button:</strong> "Start Learning Journey" to begin interactive experience</li>
+    </ul>
+
+    <h3>3. Interface Navigation</h3>
+    <ul>
+        <li><strong>Header:</strong> Platform title and course alignment information</li>
+        <li><strong>Main Content:</strong> Interactive scenarios and transport mode selection</li>
+        <li><strong>Map Area:</strong> Geographic visualization with real transport hubs</li>
+        <li><strong>Control Panel:</strong> Scenario selection, transport modes, and simulation controls</li>
+        <li><strong>Results Area:</strong> Performance metrics and educational feedback</li>
+    </ul>
+
+    <div class="page-break"></div>
+
+    <h2 id="learning-scenarios">🎓 Learning Scenarios</h2>
+
+    <div class="scenario-card no-break">
+        <h3>Scenario 1: Global Trade Simulation</h3>
+        <ul>
+            <li><strong>Difficulty:</strong> Advanced</li>
+            <li><strong>Focus:</strong> International cargo flows between major ports and economic zones</li>
+            <li><strong>Learning Objectives:</strong>
+                <ul>
+                    <li>Optimize shipping routes considering geographic constraints</li>
+                    <li>Minimize transport costs while maintaining service levels</li>
+                    <li>Understand the role of major shipping corridors and chokepoints</li>
+                </ul>
+            </li>
+            <li><strong>Real-world Context:</strong> Container shipping, maritime corridors, port operations</li>
+            <li><strong>Key Concepts:</strong> Economies of scale, hub-and-spoke networks, intermodal connectivity</li>
+        </ul>
+    </div>
+
+    <div class="scenario-card no-break">
+        <h3>Scenario 2: Urban Commuting Network</h3>
+        <ul>
+            <li><strong>Difficulty:</strong> Intermediate</li>
+            <li><strong>Focus:</strong> Design efficient public transport for growing metropolitan areas</li>
+            <li><strong>Learning Objectives:</strong>
+                <ul>
+                    <li>Connect residential and business districts effectively</li>
+                    <li>Reduce travel time while optimizing capacity</li>
+                    <li>Balance cost, coverage, and service quality</li>
+                </ul>
+            </li>
+            <li><strong>Real-world Context:</strong> Metro systems, bus networks, integrated urban transport</li>
+            <li><strong>Key Concepts:</strong> Network connectivity, modal integration, accessibility planning</li>
+        </ul>
+    </div>
+
+    <div class="scenario-card no-break">
+        <h3>Scenario 3: Supply Chain Optimization</h3>
+        <ul>
+            <li><strong>Difficulty:</strong> Advanced</li>
+            <li><strong>Focus:</strong> Build efficient logistics networks for manufacturing and distribution</li>
+            <li><strong>Learning Objectives:</strong>
+                <ul>
+                    <li>Connect suppliers to factories efficiently</li>
+                    <li>Optimize distribution to retail centers</li>
+                    <li>Minimize total logistics cost while meeting service requirements</li>
+                </ul>
+            </li>
+            <li><strong>Real-world Context:</strong> Manufacturing logistics, distribution centers, just-in-time delivery</li>
+            <li><strong>Key Concepts:</strong> Supply chain integration, inventory-transport trade-offs, reliability</li>
+        </ul>
+    </div>
+
+    <div class="scenario-card no-break">
+        <h3>Scenario 4: Regional Connectivity</h3>
+        <ul>
+            <li><strong>Difficulty:</strong> Beginner</li>
+            <li><strong>Focus:</strong> Connect rural areas with urban centers through multimodal transport</li>
+            <li><strong>Learning Objectives:</strong>
+                <ul>
+                    <li>Improve accessibility for underserved regions</li>
+                    <li>Support economic development through connectivity</li>
+                    <li>Consider geographical barriers and infrastructure constraints</li>
+                </ul>
+            </li>
+            <li><strong>Real-world Context:</strong> Rural transport, regional development, accessibility planning</li>
+            <li><strong>Key Concepts:</strong> Economic development, spatial equity, infrastructure investment</li>
+        </ul>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2 id="transport-modes">🚛 Transport Modes</h2>
+
+    <div class="transport-mode no-break">
+        <h3>Maritime Transport</h3>
+        <ul>
+            <li><strong>Characteristics:</strong> Very high capacity, slow speed, low cost</li>
+            <li><strong>Best For:</strong> Bulk cargo, international trade, long-distance freight</li>
+            <li><strong>Capacity:</strong> Up to 20,000+ TEU containers</li>
+            <li><strong>Speed:</strong> 15-25 knots average</li>
+            <li><strong>Geographic Considerations:</strong> Coastal access, port infrastructure, canal constraints</li>
+            <li><strong>Environmental Impact:</strong> Lowest CO₂ per ton-km for bulk goods</li>
+            <li><strong>Real Examples:</strong> Container ships, bulk carriers, tankers</li>
+        </ul>
+    </div>
+
+    <div class="transport-mode no-break">
+        <h3>Rail Transport</h3>
+        <ul>
+            <li><strong>Characteristics:</strong> High capacity, medium speed, low-medium cost</li>
+            <li><strong>Best For:</strong> Continental freight, urban transit, medium-distance transport</li>
+            <li><strong>Capacity:</strong> 100+ car freight trains</li>
+            <li><strong>Speed:</strong> 80-120 km/h freight, 200+ km/h passenger</li>
+            <li><strong>Geographic Considerations:</strong> Topography, gauge compatibility, network connectivity</li>
+            <li><strong>Environmental Impact:</strong> Energy efficient for high-volume transport</li>
+            <li><strong>Real Examples:</strong> Freight railways, high-speed rail, metro systems</li>
+        </ul>
+    </div>
+
+    <div class="transport-mode no-break">
+        <h3>Road Transport</h3>
+        <ul>
+            <li><strong>Characteristics:</strong> Medium capacity, fast speed, medium cost, high flexibility</li>
+            <li><strong>Best For:</strong> Door-to-door delivery, last-mile transport, flexible routing</li>
+            <li><strong>Capacity:</strong> Up to 40 tons per truck</li>
+            <li><strong>Speed:</strong> 60-120 km/h depending on infrastructure</li>
+            <li><strong>Geographic Considerations:</strong> Road network quality, traffic congestion, regulations</li>
+            <li><strong>Environmental Impact:</strong> Higher emissions per ton-km, congestion issues</li>
+            <li><strong>Real Examples:</strong> Trucking, buses, delivery vehicles</li>
+        </ul>
+    </div>
+
+    <div class="transport-mode no-break">
+        <h3>Air Transport</h3>
+        <ul>
+            <li><strong>Characteristics:</strong> Low capacity, very fast speed, high cost</li>
+            <li><strong>Best For:</strong> Time-sensitive cargo, high-value goods, long-distance passenger transport</li>
+            <li><strong>Capacity:</strong> ~150 tons max for cargo aircraft</li>
+            <li><strong>Speed:</strong> 800+ km/h</li>
+            <li><strong>Geographic Considerations:</strong> Airport infrastructure, air traffic control, weather</li>
+            <li><strong>Environmental Impact:</strong> Highest CO₂ emissions per ton-km</li>
+            <li><strong>Real Examples:</strong> Cargo planes, passenger aircraft, express delivery</li>
+        </ul>
+    </div>
+
+    <div class="transport-mode no-break">
+        <h3>Pipeline Transport</h3>
+        <ul>
+            <li><strong>Characteristics:</strong> Very high capacity, continuous operation, very low cost</li>
+            <li><strong>Best For:</strong> Liquids and gases over long distances</li>
+            <li><strong>Capacity:</strong> Continuous flow (thousands of barrels per day)</li>
+            <li><strong>Speed:</strong> 5-15 km/h flow rate</li>
+            <li><strong>Geographic Considerations:</strong> Terrain, regulatory approval, security</li>
+            <li><strong>Environmental Impact:</strong> Very low for appropriate products</li>
+            <li><strong>Real Examples:</strong> Oil pipelines, gas pipelines, water mains</li>
+        </ul>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2 id="how-to-use">🎮 How to Use the Platform</h2>
+
+    <h3>Step 1: Choose Your Scenario</h3>
+    <ol>
+        <li>Click "Start Learning Journey" on the main page</li>
+        <li>Review the four available scenarios in the left panel</li>
+        <li>Click on a scenario card to select it</li>
+        <li>Read the description, difficulty level, and learning objectives</li>
+        <li>The selected scenario will be highlighted with a blue border</li>
+    </ol>
+
+    <h3>Step 2: Select Transport Mode</h3>
+    <ol>
+        <li>Review the five transport modes in the right panel</li>
+        <li>Consider the scenario requirements and geographic context</li>
+        <li>Click on a transport mode to select it</li>
+        <li>Note the capacity, speed, and cost characteristics</li>
+        <li>The selected mode will be highlighted with a green border</li>
+    </ol>
+
+    <h3>Step 3: Examine the Interactive Map</h3>
+    <ul>
+        <li><strong>Map Features:</strong> Real transport hubs, major ports, airports, rail networks</li>
+        <li><strong>Navigation:</strong> Zoom and pan to explore different regions</li>
+        <li><strong>Context:</strong> Map automatically adjusts focus based on selected scenario</li>
+        <li><strong>Markers:</strong> Click on transport hub markers for detailed information</li>
+        <li><strong>Geographic Analysis:</strong> Consider distances, terrain, and infrastructure</li>
+    </ul>
+
+    <h3>Step 4: Run the Simulation</h3>
+    <ol>
+        <li>Ensure both scenario and transport mode are selected</li>
+        <li>Click the "Run Simulation" button</li>
+        <li>Wait for processing (typically 1-2 seconds)</li>
+        <li>Review the comprehensive results display</li>
+    </ol>
+
+    <h3>Step 5: Analyze Results</h3>
+    <p>The simulation provides detailed feedback across four key dimensions:</p>
+
+    <h4>Performance Metrics</h4>
+    <ul>
+        <li><strong>Total Cost:</strong> Economic efficiency of transport solution</li>
+        <li><strong>Total Time:</strong> Operational efficiency and speed</li>
+        <li><strong>System Efficiency:</strong> Overall network performance</li>
+        <li><strong>Environmental Impact:</strong> CO₂ emissions and sustainability</li>
+    </ul>
+
+    <h4>Assessment Scoring</h4>
+    <ul>
+        <li><strong>Overall Score:</strong> 0-100 points across all dimensions</li>
+        <li><strong>Letter Grade:</strong> A+ (90-100) to D (50-59)</li>
+        <li><strong>Performance Breakdown:</strong> Individual scores for each metric</li>
+    </ul>
+
+    <div class="page-break"></div>
+
+    <h2 id="assessment">📊 Understanding Assessment Results</h2>
+
+    <h3>Scoring Methodology</h3>
+    <p>The platform evaluates performance across four equally weighted dimensions (25% each):</p>
+
+    <div class="feature-box no-break">
+        <h4>Cost Efficiency (25 points)</h4>
+        <ul>
+            <li>Evaluates economic viability of transport solution</li>
+            <li>Considers total logistics costs, infrastructure requirements</li>
+            <li>Lower costs generally receive higher scores</li>
+            <li>Balanced against service quality requirements</li>
+        </ul>
+    </div>
+
+    <div class="feature-box no-break">
+        <h4>Time Efficiency (25 points)</h4>
+        <ul>
+            <li>Measures speed and operational performance</li>
+            <li>Considers total journey time, reliability factors</li>
+            <li>Faster solutions typically score higher</li>
+            <li>Balanced against cost and capacity considerations</li>
+        </ul>
+    </div>
+
+    <div class="feature-box no-break">
+        <h4>System Efficiency (25 points)</h4>
+        <ul>
+            <li>Assesses overall network performance and utilization</li>
+            <li>Considers capacity utilization, connectivity, flexibility</li>
+            <li>Higher efficiency indicates better resource use</li>
+            <li>Reflects transport system optimization principles</li>
+        </ul>
+    </div>
+
+    <div class="feature-box no-break">
+        <h4>Environmental Impact (25 points)</h4>
+        <ul>
+            <li>Evaluates sustainability and environmental performance</li>
+            <li>Measures CO₂ emissions, energy efficiency, environmental footprint</li>
+            <li>Lower impact solutions receive higher scores</li>
+            <li>Increasingly important in transport planning</li>
+        </ul>
+    </div>
+
+    <h3>Grade Interpretation</h3>
+    <table class="grade-table">
+        <tr>
+            <th>Grade</th>
+            <th>Score Range</th>
+            <th>Performance Level</th>
+            <th>Interpretation</th>
+        </tr>
+        <tr class="grade-a">
+            <td><strong>A+</strong></td>
+            <td>90-100</td>
+            <td>Excellent</td>
+            <td>Outstanding transport solution demonstrating mastery</td>
+        </tr>
+        <tr class="grade-a">
+            <td><strong>A</strong></td>
+            <td>85-89</td>
+            <td>Very Good</td>
+            <td>Strong performance with minor optimization opportunities</td>
+        </tr>
+        <tr class="grade-a">
+            <td><strong>A-</strong></td>
+            <td>80-84</td>
+            <td>Good+</td>
+            <td>Solid understanding with some areas for improvement</td>
+        </tr>
+        <tr class="grade-b">
+            <td><strong>B+</strong></td>
+            <td>75-79</td>
+            <td>Good</td>
+            <td>Competent solution with moderate optimization potential</td>
+        </tr>
+        <tr class="grade-b">
+            <td><strong>B</strong></td>
+            <td>70-74</td>
+            <td>Satisfactory</td>
+            <td>Adequate performance meeting basic requirements</td>
+        </tr>
+        <tr class="grade-b">
+            <td><strong>B-</strong></td>
+            <td>65-69</td>
+            <td>Fair+</td>
+            <td>Below optimal performance, review key concepts</td>
+        </tr>
+        <tr class="grade-c">
+            <td><strong>C+</strong></td>
+            <td>60-64</td>
+            <td>Fair</td>
+            <td>Significant improvement needed, focus on fundamentals</td>
+        </tr>
+        <tr class="grade-c">
+            <td><strong>C</strong></td>
+            <td>55-59</td>
+            <td>Poor+</td>
+            <td>Major gaps in understanding, additional study required</td>
+        </tr>
+        <tr class="grade-c">
+            <td><strong>C-</strong></td>
+            <td>50-54</td>
+            <td>Poor</td>
+            <td>Extensive review needed, consider simpler scenarios first</td>
+        </tr>
+        <tr class="grade-d">
+            <td><strong>D</strong></td>
+            <td>Below 50</td>
+            <td>Inadequate</td>
+            <td>Fundamental concepts not understood, seek additional help</td>
+        </tr>
+    </table>
+
+    <div class="page-break"></div>
+
+    <h2 id="learning-strategies">🎯 Learning Strategies</h2>
+
+    <div class="success-box no-break">
+        <h3>For Beginners</h3>
+        <ol>
+            <li><strong>Start Simple:</strong> Begin with Regional Connectivity (Beginner level)</li>
+            <li><strong>Focus on Concepts:</strong> Understand basic transport mode characteristics</li>
+            <li><strong>Read Feedback:</strong> Pay close attention to educational explanations</li>
+            <li><strong>Try Different Modes:</strong> Experiment with all five transport options</li>
+            <li><strong>Build Gradually:</strong> Progress to more complex scenarios as understanding develops</li>
+        </ol>
+    </div>
+
+    <div class="feature-box no-break">
+        <h3>For Intermediate Learners</h3>
+        <ol>
+            <li><strong>Compare Alternatives:</strong> Try multiple modes for each scenario</li>
+            <li><strong>Analyze Trade-offs:</strong> Understand relationships between cost, time, and efficiency</li>
+            <li><strong>Study Geography:</strong> Consider how spatial factors influence optimal choices</li>
+            <li><strong>Read Case Studies:</strong> Learn from real-world examples in feedback</li>
+            <li><strong>Challenge Yourself:</strong> Attempt Advanced scenarios once comfortable</li>
+        </ol>
+    </div>
+
+    <div class="warning-box no-break">
+        <h3>For Advanced Students</h3>
+        <ol>
+            <li><strong>Optimize Solutions:</strong> Seek highest possible scores across all dimensions</li>
+            <li><strong>Understand Complexity:</strong> Analyze why certain combinations perform better</li>
+            <li><strong>Apply Theory:</strong> Connect results to transport geography theoretical frameworks</li>
+            <li><strong>Consider Innovation:</strong> Think about emerging technologies and future trends</li>
+            <li><strong>Teach Others:</strong> Explain results and reasoning to reinforce learning</li>
+        </ol>
+    </div>
+
+    <h2 id="technical-features">🔧 Technical Features</h2>
+
+    <h3>Interactive Map</h3>
+    <ul>
+        <li><strong>Technology:</strong> Leaflet mapping library with OpenStreetMap data</li>
+        <li><strong>Features:</strong> Zoom, pan, marker information, geographic context</li>
+        <li><strong>Transport Hubs:</strong> Major ports (Shanghai, Rotterdam), airports (Heathrow, Dubai), rail networks</li>
+        <li><strong>Dynamic Content:</strong> Map focus adjusts based on selected scenario</li>
+        <li><strong>Educational Value:</strong> Visual understanding of geographic constraints and opportunities</li>
+    </ul>
+
+    <h3>Responsive Design</h3>
+    <ul>
+        <li><strong>Desktop Optimization:</strong> Full-featured interface with detailed visualizations</li>
+        <li><strong>Tablet Compatibility:</strong> Touch-friendly interface maintaining all functionality</li>
+        <li><strong>Mobile Support:</strong> Condensed layout optimized for smaller screens</li>
+        <li><strong>Cross-Browser:</strong> Works on Chrome, Firefox, Safari, Edge, and other modern browsers</li>
+    </ul>
+
+    <h3>Performance Features</h3>
+    <ul>
+        <li><strong>Fast Loading:</strong> Optimized code and CDN delivery for quick access</li>
+        <li><strong>Real-time Simulation:</strong> Instant results with sophisticated backend calculations</li>
+        <li><strong>Offline Resilience:</strong> Core functionality works during brief connectivity issues</li>
+        <li><strong>Scalable Architecture:</strong> Supports hundreds of concurrent users</li>
+    </ul>
+
+    <div class="page-break"></div>
+
+    <h2 id="troubleshooting">🔍 Troubleshooting</h2>
+
+    <h3>Common Issues</h3>
+
+    <div class="warning-box no-break">
+        <h4>Platform Won't Load</h4>
+        <ul>
+            <li><strong>Check Internet Connection:</strong> Ensure stable internet connectivity</li>
+            <li><strong>Browser Compatibility:</strong> Use modern browser (Chrome, Firefox, Safari, Edge)</li>
+            <li><strong>Clear Cache:</strong> Refresh page or clear browser cache</li>
+            <li><strong>Disable Extensions:</strong> Ad blockers may interfere with content loading</li>
+        </ul>
+    </div>
+
+    <div class="warning-box no-break">
+        <h4>Map Not Displaying</h4>
+        <ul>
+            <li><strong>JavaScript Enabled:</strong> Ensure JavaScript is enabled in browser settings</li>
+            <li><strong>Pop-up Blockers:</strong> Disable pop-up blockers for the platform</li>
+            <li><strong>Network Issues:</strong> Check if external map services are accessible</li>
+            <li><strong>Browser Console:</strong> Check for error messages in developer tools</li>
+        </ul>
+    </div>
+
+    <div class="warning-box no-break">
+        <h4>Simulation Not Running</h4>
+        <ul>
+            <li><strong>Selection Required:</strong> Ensure both scenario and transport mode are selected</li>
+            <li><strong>Button Status:</strong> Wait for any previous simulation to complete</li>
+            <li><strong>Network Timeout:</strong> Refresh page if simulation hangs</li>
+            <li><strong>API Issues:</strong> Try again after a few moments</li>
+        </ul>
+    </div>
+
+    <h3>Performance Optimization</h3>
+    <ul>
+        <li><strong>Close Other Tabs:</strong> Free up browser memory for better performance</li>
+        <li><strong>Update Browser:</strong> Use latest browser version for optimal compatibility</li>
+        <li><strong>Check Device Storage:</strong> Ensure sufficient device storage space</li>
+        <li><strong>Network Speed:</strong> Better internet connection improves loading times</li>
+    </ul>
+
+    <div class="page-break"></div>
+
+    <h2 id="support">📞 Support & Resources</h2>
+
+    <h3>Educational Support</h3>
+    <ul>
+        <li><strong>Learning Objectives:</strong> Clearly defined outcomes for each scenario</li>
+        <li><strong>Assessment Rubrics:</strong> Detailed scoring criteria and performance expectations</li>
+        <li><strong>Real-World Examples:</strong> Extensive case studies and industry examples</li>
+        <li><strong>Theoretical Framework:</strong> Connection to transport geography academic literature</li>
+    </ul>
+
+    <h3>Technical Support</h3>
+    <ul>
+        <li><strong>User Manual:</strong> This comprehensive guide covering all features</li>
+        <li><strong>Quick Start Guide:</strong> Essential steps for immediate platform use</li>
+        <li><strong>Video Tutorials:</strong> Step-by-step walkthroughs (if available)</li>
+        <li><strong>FAQ Section:</strong> Common questions and solutions</li>
+    </ul>
+
+    <h3>Academic Resources</h3>
+    <ul>
+        <li><strong>Reading Lists:</strong> Recommended books and articles on transport geography</li>
+        <li><strong>Research Papers:</strong> Academic studies relevant to platform scenarios</li>
+        <li><strong>Industry Reports:</strong> Current data and trends in transport sector</li>
+        <li><strong>Professional Organizations:</strong> Transport planning and geography associations</li>
+    </ul>
+
+    <div class="success-box">
+        <h3>Platform Access Information</h3>
+        <p><strong>Primary URL:</strong> <code>https://3000-i4b6xf42yzqyb7z0k1e6h-6532622b.e2b.dev</code></p>
+        <p><strong>Alternative Access:</strong> Contact your instructor for additional access methods</p>
+        <p><strong>System Requirements:</strong> Modern web browser with JavaScript enabled</p>
+        <p><strong>Optimal Experience:</strong> Desktop or tablet with internet connection</p>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>🎉 Conclusion</h2>
+
+    <p>The Transport Geography Interactive Learning Platform transforms traditional classroom learning into an engaging, hands-on experience. Through realistic simulations, comprehensive assessments, and detailed educational feedback, students develop deep understanding of transport systems and their geographic context.</p>
+
+    <p>Whether you're a beginner learning basic concepts or an advanced student optimizing complex transport networks, the platform adapts to your learning level and provides valuable insights into the fascinating world of transport geography.</p>
+
+    <div class="success-box">
+        <p><strong>Ready to start your transport geography learning journey?</strong></p>
+        <p><strong>Access the Platform:</strong> <code>https://3000-i4b6xf42yzqyb7z0k1e6h-6532622b.e2b.dev</code></p>
+    </div>
+
+    <div class="footer">
+        <p><strong>Transport Geography Interactive Learning Platform</strong></p>
+        <p>© 2024 - Designed for educational excellence in transport and logistics education</p>
+        <p>User Manual Version 1.0 | Last Updated: September 2024</p>
+    </div>
+</body>
+</html>
