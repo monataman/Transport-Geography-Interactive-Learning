@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لعبة جغرافيا النقل التعليمية</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .arabic { direction: rtl; text-align: right; }
+        .game-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .game-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+        .download-btn { 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+        .download-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4); }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen arabic">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <h1 class="text-5xl font-bold text-gray-800 mb-4">
+                <i class="fas fa-globe-americas mr-3"></i>
+                لعبة جغرافيا النقل التعليمية
+            </h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                لعبة تفاعلية تعليمية لطلاب كلية النقل والخدمات اللوجستية الدولية
+            </p>
+        </div>
+
+        <!-- Download Options -->
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+            <!-- Play Online -->
+            <div class="game-card bg-white rounded-xl p-8 shadow-lg">
+                <div class="text-center">
+                    <i class="fas fa-play-circle text-6xl text-green-500 mb-4"></i>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">العب الآن مباشرة</h2>
+                    <p class="text-gray-600 mb-6">ابدأ اللعبة فوراً في المتصفح بدون تحميل</p>
+                    <a href="transport-geography-game-standalone.html" 
+                       class="download-btn text-white px-8 py-3 rounded-lg font-bold inline-block">
+                        <i class="fas fa-rocket mr-2"></i>
+                        ابدأ اللعبة
+                    </a>
+                </div>
+            </div>
+
+            <!-- Download -->
+            <div class="game-card bg-white rounded-xl p-8 shadow-lg">
+                <div class="text-center">
+                    <i class="fas fa-download text-6xl text-blue-500 mb-4"></i>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">حمّل للكمبيوتر</h2>
+                    <p class="text-gray-600 mb-6">احصل على النسخة المبسطة للتشغيل بدون إنترنت</p>
+                    <a href="لعبة-جغرافيا-النقل-مبسطة.zip" download
+                       class="download-btn text-white px-8 py-3 rounded-lg font-bold inline-block">
+                        <i class="fas fa-file-archive mr-2"></i>
+                        تحميل اللعبة
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="bg-white rounded-xl p-8 shadow-lg mb-8">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">
+                <i class="fas fa-star mr-2"></i>
+                مميزات اللعبة
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="text-center">
+                    <i class="fas fa-map text-4xl text-blue-500 mb-3"></i>
+                    <h3 class="font-bold text-gray-800">خرائط تفاعلية</h3>
+                    <p class="text-sm text-gray-600">خرائط ثلاثية الأبعاد للتعلم التفاعلي</p>
+                </div>
+                <div class="text-center">
+                    <i class="fas fa-tasks text-4xl text-green-500 mb-3"></i>
+                    <h3 class="font-bold text-gray-800">4 سيناريوهات</h3>
+                    <p class="text-sm text-gray-600">سيناريوهات تعليمية متنوعة ومتدرجة</p>
+                </div>
+                <div class="text-center">
+                    <i class="fas fa-truck text-4xl text-purple-500 mb-3"></i>
+                    <h3 class="font-bold text-gray-800">5 أنماط نقل</h3>
+                    <p class="text-sm text-gray-600">بحري، جوي، بري، سكك حديدية، أنابيب</p>
+                </div>
+                <div class="text-center">
+                    <i class="fas fa-chart-line text-4xl text-red-500 mb-3"></i>
+                    <h3 class="font-bold text-gray-800">تقييم شامل</h3>
+                    <p class="text-sm text-gray-600">نظام تقييم متكامل ومتابعة التقدم</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="bg-white rounded-xl p-8 shadow-lg">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">
+                <i class="fas fa-info-circle mr-2"></i>
+                كيفية التشغيل
+            </h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold text-blue-600 mb-3">
+                        <i class="fas fa-globe mr-2"></i>
+                        التشغيل المباشر
+                    </h3>
+                    <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                        <li>انقر على "ابدأ اللعبة"</li>
+                        <li>ستفتح اللعبة في نافذة جديدة</li>
+                        <li>اختر السيناريو المناسب</li>
+                        <li>استمتع بالتعلم!</li>
+                    </ol>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-green-600 mb-3">
+                        <i class="fas fa-desktop mr-2"></i>
+                        بعد التحميل
+                    </h3>
+                    <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                        <li>فك ضغط الملف المحمّل</li>
+                        <li>انقر نقرتين على ملف HTML</li>
+                        <li>ستفتح اللعبة في المتصفح</li>
+                        <li>تعمل بدون إنترنت!</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-12 text-gray-600">
+            <p>© 2024 لعبة جغرافيا النقل التعليمية - كلية النقل والخدمات اللوجستية الدولية</p>
+            <p class="mt-2">
+                <i class="fas fa-code mr-1"></i>
+                تم التطوير باستخدام Hono + TypeScript + Leaflet.js
+            </p>
+        </div>
+    </div>
+</body>
+</html>

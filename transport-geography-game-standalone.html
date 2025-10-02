@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لعبة جغرافية النقل التعليمية</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Leaflet Maps -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <style>
+        body { font-family: 'Arial', 'Tahoma', sans-serif; }
+        .scenario-card { transition: all 0.3s ease; cursor: pointer; }
+        .scenario-card:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .transport-mode { transition: all 0.3s ease; cursor: pointer; }
+        .transport-mode:hover { transform: scale(1.02); }
+        .selected { border: 3px solid #3b82f6 !important; background: #eff6ff; }
+        #map { height: 400px; border-radius: 8px; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen">
+        <!-- Header -->
+        <header class="bg-gradient-to-r from-blue-600 to-purple-700 text-white p-6">
+            <div class="container mx-auto text-center">
+                <h1 class="text-4xl font-bold mb-2">
+                    <i class="fas fa-globe-americas mr-3"></i>
+                    لعبة جغرافية النقل التعليمية
+                </h1>
+                <p class="text-xl opacity-90">
+                    تعلم أساسيات النقل والجغرافيا من خلال المحاكاة التفاعلية
+                </p>
+            </div>
+        </header>
+
+        <div class="container mx-auto p-6">
+            <!-- Game Interface -->
+            <div class="bg-white rounded-lg shadow-xl overflow-hidden mb-8">
+                <div class="bg-gradient-to-r from-green-600 to-blue-600 p-4">
+                    <h2 class="text-2xl font-bold text-white text-center">
+                        <i class="fas fa-gamepad mr-2"></i>
+                        المحاكاة التفاعلية
+                    </h2>
+                </div>
+
+                <div class="p-6">
+                    <div class="grid lg:grid-cols-3 gap-6">
+                        <!-- Map Area -->
+                        <div class="lg:col-span-2">
+                            <h3 class="text-xl font-semibold mb-3 text-gray-800">
+                                <i class="fas fa-map mr-2"></i>
+                                الخريطة التفاعلية
+                            </h3>
+                            <div id="map" class="bg-gray-200 border-2 border-gray-300 rounded-lg"></div>
+                        </div>
+
+                        <!-- Controls -->
+                        <div class="space-y-6">
+                            <!-- Scenarios -->
+                            <div>
+                                <h3 class="text-lg font-semibold mb-3 text-gray-800">
+                                    <i class="fas fa-tasks mr-2"></i>
+                                    السيناريوهات التعليمية
+                                </h3>
+                                <div id="scenarios" class="space-y-2">
+                                    <div class="scenario-card bg-white border-2 border-gray-200 rounded-lg p-3" data-scenario="global-trade">
+                                        <h4 class="font-semibold text-blue-800">التجارة العالمية</h4>
+                                        <p class="text-sm text-gray-600">إدارة تدفق البضائع الدولية</p>
+                                        <span class="text-xs bg-red-500 text-white px-2 py-1 rounded">متقدم</span>
+                                    </div>
+                                    
+                                    <div class="scenario-card bg-white border-2 border-gray-200 rounded-lg p-3" data-scenario="urban-transport">
+                                        <h4 class="font-semibold text-green-800">النقل الحضري</h4>
+                                        <p class="text-sm text-gray-600">تصميم شبكة النقل العام</p>
+                                        <span class="text-xs bg-yellow-500 text-white px-2 py-1 rounded">متوسط</span>
+                                    </div>
+                                    
+                                    <div class="scenario-card bg-white border-2 border-gray-200 rounded-lg p-3" data-scenario="supply-chain">
+                                        <h4 class="font-semibold text-purple-800">سلسلة التوريد</h4>
+                                        <p class="text-sm text-gray-600">شبكة اللوجستيات والتوزيع</p>
+                                        <span class="text-xs bg-red-500 text-white px-2 py-1 rounded">متقدم</span>
+                                    </div>
+                                    
+                                    <div class="scenario-card bg-white border-2 border-gray-200 rounded-lg p-3" data-scenario="regional">
+                                        <h4 class="font-semibold text-indigo-800">الربط الإقليمي</h4>
+                                        <p class="text-sm text-gray-600">ربط المناطق الريفية بالحضرية</p>
+                                        <span class="text-xs bg-green-500 text-white px-2 py-1 rounded">مبتدئ</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Transport Modes -->
+                            <div>
+                                <h3 class="text-lg font-semibold mb-3 text-gray-800">
+                                    <i class="fas fa-shipping-fast mr-2"></i>
+                                    وسائل النقل
+                                </h3>
+                                <div id="transport-modes" class="space-y-2">
+                                    <div class="transport-mode bg-blue-50 border-2 border-blue-200 rounded-lg p-3" data-mode="maritime">
+                                        <div class="flex items-center mb-2">
+                                            <i class="fas fa-ship text-blue-600 ml-2"></i>
+                                            <h5 class="font-medium text-blue-800">النقل البحري</h5>
+                                        </div>
+                                        <div class="text-xs text-gray-600">
+                                            <span class="font-semibold">السعة:</span> عالية جداً | 
+                                            <span class="font-semibold">السرعة:</span> بطيئة | 
+                                            <span class="font-semibold">التكلفة:</span> منخفضة
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="transport-mode bg-orange-50 border-2 border-orange-200 rounded-lg p-3" data-mode="rail">
+                                        <div class="flex items-center mb-2">
+                                            <i class="fas fa-train text-orange-600 ml-2"></i>
+                                            <h5 class="font-medium text-orange-800">السكك الحديدية</h5>
+                                        </div>
+                                        <div class="text-xs text-gray-600">
+                                            <span class="font-semibold">السعة:</span> عالية | 
+                                            <span class="font-semibold">السرعة:</span> متوسطة | 
+                                            <span class="font-semibold">التكلفة:</span> متوسطة
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="transport-mode bg-gray-50 border-2 border-gray-200 rounded-lg p-3" data-mode="road">
+                                        <div class="flex items-center mb-2">
+                                            <i class="fas fa-truck text-gray-600 ml-2"></i>
+                                            <h5 class="font-medium text-gray-800">النقل البري</h5>
+                                        </div>
+                                        <div class="text-xs text-gray-600">
+                                            <span class="font-semibold">السعة:</span> متوسطة | 
+                                            <span class="font-semibold">السرعة:</span> سريعة | 
+                                            <span class="font-semibold">التكلفة:</span> متوسطة
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="transport-mode bg-red-50 border-2 border-red-200 rounded-lg p-3" data-mode="air">
+                                        <div class="flex items-center mb-2">
+                                            <i class="fas fa-plane text-red-600 ml-2"></i>
+                                            <h5 class="font-medium text-red-800">النقل الجوي</h5>
+                                        </div>
+                                        <div class="text-xs text-gray-600">
+                                            <span class="font-semibold">السعة:</span> منخفضة | 
+                                            <span class="font-semibold">السرعة:</span> سريعة جداً | 
+                                            <span class="font-semibold">التكلفة:</span> عالية
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="transport-mode bg-green-50 border-2 border-green-200 rounded-lg p-3" data-mode="pipeline">
+                                        <div class="flex items-center mb-2">
+                                            <i class="fas fa-industry text-green-600 ml-2"></i>
+                                            <h5 class="font-medium text-green-800">الأنابيب</h5>
+                                        </div>
+                                        <div class="text-xs text-gray-600">
+                                            <span class="font-semibold">السعة:</span> عالية | 
+                                            <span class="font-semibold">السرعة:</span> مستمرة | 
+                                            <span class="font-semibold">التكلفة:</span> منخفضة
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Simulate Button -->
+                            <button id="simulate-btn" class="w-full bg-gradient-to-r from-green-500 to-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:from-green-600 hover:to-blue-700 transition-all">
+                                <i class="fas fa-cogs mr-2"></i>
+                                تشغيل المحاكاة
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Results -->
+                    <div id="results" class="hidden mt-6 p-4 bg-gray-50 rounded-lg">
+                        <h3 class="text-lg font-semibold mb-3 text-center">نتائج المحاكاة</h3>
+                        <div id="results-content" class="grid md:grid-cols-4 gap-4">
+                            <!-- Results will be displayed here -->
+                        </div>
+                        <div id="feedback" class="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                            <h4 class="font-semibold text-blue-800 mb-2">التغذية الراجعة التعليمية:</h4>
+                            <ul id="feedback-list" class="list-disc list-inside space-y-1 text-blue-700 text-sm">
+                                <!-- Feedback will be added here -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Educational Content -->
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-xl font-semibold mb-3 text-blue-800">
+                        <i class="fas fa-graduation-cap mr-2"></i>
+                        الأهداف التعليمية
+                    </h3>
+                    <ul class="space-y-2 text-gray-700">
+                        <li><i class="fas fa-check text-green-600 ml-2"></i>فهم أساسيات التنقل</li>
+                        <li><i class="fas fa-check text-green-600 ml-2"></i>تحليل القيود الجغرافية</li>
+                        <li><i class="fas fa-check text-green-600 ml-2"></i>تطبيق مبادئ النقل</li>
+                        <li><i class="fas fa-check text-green-600 ml-2"></i>تقييم الكفاءة والتكلفة</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-xl font-semibold mb-3 text-green-800">
+                        <i class="fas fa-chart-line mr-2"></i>
+                        مؤشرات الأداء
+                    </h3>
+                    <ul class="space-y-2 text-gray-700">
+                        <li><i class="fas fa-dollar-sign text-blue-600 ml-2"></i>الكفاءة الاقتصادية</li>
+                        <li><i class="fas fa-clock text-orange-600 ml-2"></i>كفاءة الوقت</li>
+                        <li><i class="fas fa-cogs text-purple-600 ml-2"></i>كفاءة النظام</li>
+                        <li><i class="fas fa-leaf text-green-600 ml-2"></i>التأثير البيئي</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-xl font-semibold mb-3 text-purple-800">
+                        <i class="fas fa-world mr-2"></i>
+                        أمثلة حقيقية
+                    </h3>
+                    <ul class="space-y-2 text-gray-700 text-sm">
+                        <li><i class="fas fa-ship text-blue-600 ml-1"></i>موانئ شنغهاي وروتردام</li>
+                        <li><i class="fas fa-train text-orange-600 ml-1"></i>شبكة القطارات اليابانية</li>
+                        <li><i class="fas fa-plane text-red-600 ml-1"></i>مطار هيثرو ودبي</li>
+                        <li><i class="fas fa-road text-gray-600 ml-1"></i>طرق النقل السريع</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Game Logic
+        let selectedScenario = null;
+        let selectedMode = null;
+        let map = null;
+
+        // Initialize Map
+        function initMap() {
+            map = L.map('map').setView([30, 0], 2);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+            
+            // Add transport hubs
+            const hubs = [
+                {name: 'ميناء شنغهاي', lat: 31.2304, lng: 121.4737, type: 'maritime'},
+                {name: 'مطار هيثرو', lat: 51.4700, lng: -0.4543, type: 'air'},
+                {name: 'قناة السويس', lat: 30.5234, lng: 32.6056, type: 'maritime'},
+                {name: 'مطار دبي', lat: 25.2532, lng: 55.3657, type: 'air'}
+            ];
+            
+            hubs.forEach(hub => {
+                L.marker([hub.lat, hub.lng])
+                    .addTo(map)
+                    .bindPopup(`<b>${hub.name}</b><br>النوع: ${hub.type}`);
+            });
+        }
+
+        // Scenario Selection
+        document.querySelectorAll('.scenario-card').forEach(card => {
+            card.addEventListener('click', function() {
+                document.querySelectorAll('.scenario-card').forEach(c => c.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedScenario = this.dataset.scenario;
+                console.log('Selected scenario:', selectedScenario);
+            });
+        });
+
+        // Transport Mode Selection
+        document.querySelectorAll('.transport-mode').forEach(mode => {
+            mode.addEventListener('click', function() {
+                document.querySelectorAll('.transport-mode').forEach(m => m.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedMode = this.dataset.mode;
+                console.log('Selected mode:', selectedMode);
+            });
+        });
+
+        // Simulation
+        document.getElementById('simulate-btn').addEventListener('click', function() {
+            if (!selectedScenario || !selectedMode) {
+                alert('يرجى اختيار سيناريو ووسيلة نقل أولاً');
+                return;
+            }
+            
+            // Simulate results
+            const results = {
+                cost: Math.floor(Math.random() * 1000000 + 100000),
+                time: Math.floor(Math.random() * 72 + 12),
+                efficiency: Math.floor(Math.random() * 40 + 60),
+                environmental: Math.floor(Math.random() * 30 + 10)
+            };
+            
+            // Display results
+            document.getElementById('results-content').innerHTML = `
+                <div class="bg-blue-50 border border-blue-200 rounded p-3 text-center">
+                    <div class="text-2xl font-bold text-blue-800">$${results.cost.toLocaleString()}</div>
+                    <div class="text-sm text-blue-600">التكلفة الإجمالية</div>
+                </div>
+                <div class="bg-green-50 border border-green-200 rounded p-3 text-center">
+                    <div class="text-2xl font-bold text-green-800">${results.time}س</div>
+                    <div class="text-sm text-green-600">الوقت الإجمالي</div>
+                </div>
+                <div class="bg-yellow-50 border border-yellow-200 rounded p-3 text-center">
+                    <div class="text-2xl font-bold text-yellow-800">${results.efficiency}%</div>
+                    <div class="text-sm text-yellow-600">الكفاءة</div>
+                </div>
+                <div class="bg-red-50 border border-red-200 rounded p-3 text-center">
+                    <div class="text-2xl font-bold text-red-800">${results.environmental}</div>
+                    <div class="text-sm text-red-600">التأثير البيئي</div>
+                </div>
+            `;
+            
+            // Generate feedback
+            const feedback = generateFeedback(selectedScenario, selectedMode, results);
+            document.getElementById('feedback-list').innerHTML = feedback.map(f => `<li>${f}</li>`).join('');
+            
+            document.getElementById('results').classList.remove('hidden');
+            document.getElementById('results').scrollIntoView({behavior: 'smooth'});
+        });
+
+        function generateFeedback(scenario, mode, results) {
+            const feedback = [];
+            
+            if (results.efficiency > 80) {
+                feedback.push('🎉 ممتاز! اختيار موفق لوسيلة النقل المناسبة للسيناريو');
+            } else if (results.efficiency > 60) {
+                feedback.push('👍 جيد! يمكن تحسين الكفاءة من خلال النظر في البدائل');
+            } else {
+                feedback.push('💡 يحتاج تحسين. راجع خصائص وسائل النقل المختلفة');
+            }
+            
+            if (mode === 'maritime') {
+                feedback.push('🚢 النقل البحري مثالي للتجارة الدولية والبضائع الكبيرة');
+            } else if (mode === 'air') {
+                feedback.push('✈️ النقل الجوي سريع لكن مكلف. مناسب للبضائع عالية القيمة');
+            } else if (mode === 'rail') {
+                feedback.push('🚂 السكك الحديدية كفوءة للنقل القاري والحضري');
+            }
+            
+            if (results.environmental > 25) {
+                feedback.push('🌱 فكر في خيارات أكثر استدامة بيئياً');
+            }
+            
+            return feedback;
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', function() {
+            initMap();
+        });
+    </script>
+</body>
+</html>
