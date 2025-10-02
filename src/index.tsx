@@ -106,6 +106,11 @@ app.get('/manual', (c) => {
   return c.redirect('/static/user-manual.html')
 })
 
+// Project Download route  
+app.get('/download', (c) => {
+  return c.redirect('/static/transport-geography-educational-game-complete.zip')
+})
+
 // Main game interface
 app.get('/', (c) => {
   return c.render(
